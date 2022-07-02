@@ -1,48 +1,81 @@
 # Topological Spaces
 
-### Definition: Topological spaces
+### Definition. Topological Spaces
 
-Let $X$ be any set. A family $\mathcal T \subseteq \mathcal P(X)$ is a **topology** on $X$ iff it satisfies the **Open Set Axioms** as following.
+Let $X$ be any set.
+
+A family $\mathcal T \subseteq \mathcal P(X)$ is a **topology** on $X$ iff it satisfies the **open set axioms** as following.
 
 1. $X \in \mathcal T$.
 
-2. $\mathcal T$ is closed under arbitrary union; i.e.,
-$$
-\forall \mathcal U \subseteq \mathcal T : \; \bigcup \mathcal U \in \mathcal T.
-$$
-
-1. $\mathcal T$ is closed under finite intersection; i.e.,
-$$
-\forall \mathcal U \subseteq \mathcal T: |\mathcal U| \in \mathbb N : \bigcap \mathcal U \in \mathcal T.
-$$
+2. $\mathcal T$ is closed under arbitrary union. That is, for any $\mathcal U \subseteq \mathcal T$, $\bigcup \mathcal U \in \mathcal T$.
+3. $\mathcal T$ is closed under finite intersection. That is, for any finite $\mathcal U \subseteq \mathcal T$, $\bigcap \mathcal U \in \mathcal T$.
 
 The ordered pair $(X, \mathcal T)$ is a **topological space** iff $\mathcal T$ is a topology on $X$.
 
 A subset $U \subseteq X$ is an **open set** of $(X, \mathcal T)$, or **open subset** of $X$ (with the topology $\mathcal T$), iff $U \in \mathcal T$.
 
----
+### Note. A Topology Is Not Necessarily Closed Under Infinite Intersection
 
-Some authors also consider $\emptyset \in \mathcal T$ as a part of the Open Set Axiom, but, rigorously, that is not necessary, because it can be proved by no matter the Axiom 2 or 3. Note, that $\emptyset$ is a subset of any sets, so $\emptyset \subseteq \mathcal T$. By using Axiom 2, we have
+Some topologies are closed under arbitrary intersection, e.g., the discrete topologies, but some are not. For example, let $\mathcal T$ be a Euclidean topology on $\mathbb R$, then all intervals in $\mathbb R$ is open in $(X, \mathcal T)$. But
+$$
+\bigcap \left\{ \left( -\frac{1}{n}, \frac{1}{n} \right) \right\}_{n \in \mathbb Z_{> 0}} = \{0\},
+$$
+which is not open in $(X, \mathcal T)$.
+
+### Lemma. Empty Set Is an Element of Any Topologies
+
+Let $(X, \mathcal T)$ be a topological space.
+
+Then $\emptyset \in \mathcal T$.
+
+**Proof.** $\emptyset$ is the subset of any set, so $\emptyset \subseteq \mathcal T$. Then, we have
 $$
 \emptyset = \bigcup \emptyset \in \mathcal T.
 $$
-Or, by using Axiom 3, we have
-$$
-\emptyset = \bigcap \emptyset \in \mathcal T,
-$$
-as $\emptyset$ is also a finite set with $|\emptyset| = 0$.
+$\blacksquare$
 
----
+### Example. Euclidean Topologies for $\mathbb R^n$
 
-By Axiom 3, even if the family $\mathcal T$ is an infinite topology on an infinite set $X$, it does not implies that $\mathcal T$ is closed under infinite intersection. For example, if $X = \mathbb R$, and $\mathcal T$ is the set of all open intervals in $\mathbb R$, then
+In $\mathbb R^n$, we define a mapping $\rho: X \times X \to \mathbb R_{\ge 0}$ as
 $$
-\left( -\frac{1}{i}, \frac{1}{i} \right)_{i \in \mathbb Z_{> 0}} \subseteq \mathcal T.
+\rho(\mathbf x, \mathbf y) := \left( \sum_{i = 1}^n |x_i - y_i|^2 \right)^\frac{1}{2}.
 $$
-But,
+For any $\mathbf x \in \mathbb R^n$ and for any $\delta \in \mathbb R_{> 0}$, we define
 $$
-\bigcap_{i \in \mathbb Z_{> 0}} \left( -\frac{1}{i}, \frac{1}{i} \right) = [0],
+B(\mathbf x, \delta) := \left\{ \mathbf y \in \mathbb R^n : \rho(\mathbf x, \mathbf y) < \delta \right\}.
 $$
-which is not an open interval.
+Let
+$$
+\mathcal T := \bigcup\left\{ B(\mathbf x, \delta) : \mathbf x \in \mathbb R^n \land \delta \in \mathbb R_{> 0} \right\}.
+$$
+Then, $\mathcal T$ is a topology for $\mathbb R^n$, called **Euclidean topology**.
 
-Being unnecessary to be closed under infinite intersection does not means that the topology can not be closed under infinite intersection. For example, let $\mathcal T$ be the **discrete topology** on an infinite set $X$. That is, $\mathcal T = \mathcal P(X)$. In this case, $\mathcal T$ is closed under arbitrary intersection.
+### Definition. Comparations of Topologies
+
+Let $X$ be any set, and let $\mathcal T_1$ and $\mathcal T_2$ be topologies for $X$.
+
+$\mathcal T_1$ is **coarser** than $\mathcal T_2$, or $\mathcal T_2$ is **finer** than $\mathcal T_1$, iff $\mathcal T_1 \subseteq \mathcal T_2$.
+
+### Example. Discrete Topologies
+
+For any set $X$, its power set $\mathcal P(X)$ is the **discrete topology** for $X$. It is the finest topology for $X$.
+
+### Example. Indiscrete Topologies
+
+For any set $X$, the collection $\{\emptyset, X\}$ is the **indiscrete topology**, or **trivial topology**, for $X$. It is the coarsest topology for $X$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
